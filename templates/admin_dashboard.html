@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; background: white; }
+        th, td { padding: 10px; border: 1px solid black; }
+        th { background: #007bff; color: white; }
+        form { display: inline; }
+        button { padding: 5px 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Dashboard</h1>
+    
+    <h2>Manage Athletes</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sport</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+        {% for athlete in athletes %}
+        <tr>
+            <td>{{ athlete.name }}</td>
+            <td>{{ athlete.age }}</td>
+            <td>{{ athlete.sport_type }}</td>
+            <td>{{ athlete.country }}</td>
+            <td>
+                <a href="{% url 'edit_athlete' athlete.id %}">Edit</a> | 
+                <a href="{% url 'delete_athlete' athlete.id %}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Manage Certificates</h2>
+    <table>
+        <tr>
+            <th>Certificate</th>
+            <th>Athlete</th>
+            <th>Issued By</th>
+            <th>Issue Date</th>
+            <th>Action</th>
+        </tr>
+        {% for certificate in certificates %}
+        <tr>
+            <td>{{ certificate.name }}</td>
+            <td>{{ certificate.athlete.name }}</td>
+            <td>{{ certificate.issuing_organization }}</td>
+            <td>{{ certificate.issue_date }}</td>
+            <td>
+                <a href="{% url 'edit_certificate' certificate.id %}">Edit</a> | 
+                <a href="{% url 'delete_certificate' certificate.id %}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

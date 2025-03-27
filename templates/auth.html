@@ -1,0 +1,48 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Select Login or Signup</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background: #f4f4f4;
+            }
+            .container {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .btn {
+                margin: 10px;
+                padding: 15px 30px;
+                font-size: 18px;
+                color: white;
+                border: none;
+                cursor: pointer;
+                width: 200px;
+            }
+            .login-btn {
+                background: #28a745;
+            }
+            .signup-btn {
+                background: #007bff;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="container">
+        <h2>Welcome to Sports App 🏆</h2>
+        <p>Select an option to continue:</p>
+        <button class="btn login-btn" onclick="location.href='{% url "login" %}'">Login</button>
+        <button class="btn signup-btn" onclick="location.href='{% url "signup" %}'">Signup</button>
+    </div>
+
+    </body>
+    </html>

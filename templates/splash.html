@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthletriQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #121212; /* Dark Theme */
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .splash-container {
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-size: 50px;
+            font-weight: 700;
+            color: #00A6FB;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0px 4px 15px rgba(0, 166, 251, 0.6);
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 18px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: absolute;
+            bottom: 40px;
+            width: 80%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar div {
+            width: 0;
+            height: 100%;
+            background: #00A6FB;
+            animation: progress 3s linear forwards;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "onboarding";  
+        }, 3000);
+    </script>
+</head>
+<body>
+    <div class="splash-container">
+        <div class="logo">AthletriQ</div>
+        <div class="subtitle">Your Sports Journey Starts Here</div>
+    </div>
+    <div class="progress-bar">
+        <div></div>
+    </div>
+</body>
+</html>

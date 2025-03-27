@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Certificate</title>
+</head>
+<body>
+    <h2>Edit Certificate</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Certificate Name:</label>
+        <input type="text" name="name" value="{{ certificate.name }}" required><br>
+
+        <label>Issuing Organization:</label>
+        <input type="text" name="issuing_organization" value="{{ certificate.issuing_organization }}" required><br>
+
+        <label>Issue Date:</label>
+        <input type="date" name="issue_date" value="{{ certificate.issue_date|date:'Y-m-d' }}" required><br>
+
+        <label>Expiry Date:</label>
+        <input type="date" name="expiry_date" value="{{ certificate.expiry_date|date:'Y-m-d' }}"><br>
+
+        <button type="submit">Update</button>
+        <a href="{% url 'admin_dashboard' %}">Cancel</a>
+    </form>
+</body>
+</html>

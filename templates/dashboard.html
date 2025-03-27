@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <form method="POST" action="{% url 'role_selection' %}">
+        {% csrf_token %}
+        <label for="role">Select your role:</label>
+        <select name="role" id="role">
+            <option value="Trainer">Trainer</option>
+            <option value="Sportsperson">Sportsperson</option>
+            <option value="Organizer">Organizer</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>    
+    <script>
+        document.getElementById("roleForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+        
+            const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+            const selectedRole = document.getElementById("role").value;
+        
+            fetch("{% url 'dashboard' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken  // ✅ Add CSRF token here
+                },
+                body: JSON.stringify({ role: selectedRole })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Server Response:", data);
+                alert(data.message);
+            })
+            .catch(error => console.error("Fetch Error:", error));
+        });
+        
+    </script>
+</body>
+</html>
